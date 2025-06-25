@@ -1,0 +1,37 @@
+"use client";
+
+import Link from "next/link";
+
+const AboutMe = () => {
+  return (
+    <main className="flex  w-full h-screen flex-col border-b-1 px-20 py-6">
+      <div className="pb-10">
+        <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none">
+          About Me:
+        </h1>
+      </div>
+
+      <article>
+        <div className="border-b w-fit pb-2">
+          <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold">
+            Hi, my name is Michał,
+          </h3>
+        </div>
+        <p className="leading-9 [&:not(:first-child)]:mt-6 text-xl sm:text-2xl md:text-3xl w-full md:w-2/3">
+          I'm a 20-year-old web development enthusiast aiming to start my career
+          as a front-end developer. Although I don't have professional
+          experience yet, you can check out some of the cool projects I’ve
+          built:{" "}
+          <Link href={"/projects"}>
+            <span className="text-chart-1 hover:underline hover:text-foreground">
+              Projects
+            </span>
+          </Link>
+          .
+        </p>
+      </article>
+    </main>
+  );
+};
+
+export default AboutMe;
