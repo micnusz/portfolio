@@ -7,16 +7,40 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Briefcase, HouseIcon, Mail, MenuIcon } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import {
+  Briefcase,
+  BriefcaseIcon,
+  HomeIcon,
+  HouseIcon,
+  Mail,
+  MailIcon,
+  MenuIcon,
+  X,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const Header = () => {
-  const navLinks: { href: string; title: string }[] = [
-    { href: "/", title: "Home" },
-    { href: "/projects", title: "Projects" },
-    { href: "/contact", title: "Contact" },
+  const navLinks: { href: string; title: string; icon: JSX.Element }[] = [
+    { href: "/", title: "Home", icon: <HomeIcon className="w-5 h-5" /> },
+    {
+      href: "/projects",
+      title: "Projects",
+      icon: <BriefcaseIcon className="w-5 h-5" />,
+    },
+    {
+      href: "/contact",
+      title: "Contact",
+      icon: <MailIcon className="w-5 h-5" />,
+    },
   ];
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -26,7 +50,7 @@ const Header = () => {
       <div className="flex sm:hidden">
         <NavigationMenu>
           <NavigationMenuList className="flex">
-            <NavigationMenuItem>
+            <NavigationMenuItem className="rounded-xl bg-background">
               <NavigationMenuLink asChild>
                 <Link href="/" aria-label="Go to Home page">
                   <Button
@@ -44,12 +68,13 @@ const Header = () => {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+
       <nav
         className="flex-grow flex justify-center"
         aria-label="Main navigation"
       >
         <div className="hidden sm:flex">
-          <NavigationMenu className=" rounded-xl bg-background">
+          <NavigationMenu className=" rounded-xl bg-background border-1">
             <NavigationMenuList className="flex">
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className=" rounded-l-xl">
@@ -116,25 +141,28 @@ const Header = () => {
       {/* Mobile hamburger + sheet */}
       <div className="flex sm:hidden items-center">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-          <SheetTrigger asChild>
-            <MenuIcon className="w-6 h-6 " />
+          <SheetTrigger asChild className="mx-4">
+            <MenuIcon className="w-8 h-8" />
           </SheetTrigger>
 
           <SheetContent
             side="top"
-            className="bg-black/60 backdrop-blur-sm w-screen [&>button]:hidden "
+            className="bg-background w-screen [&>button]:hidden"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            <div className="px-4 py-6 space-y-6">
+            <SheetTitle>
+              <VisuallyHidden>Mobile Navigation</VisuallyHidden>
+            </SheetTitle>
+            <div className="px-4 space-y-6">
               <div className="flex justify-end">
                 <SheetClose
                   className="p-2 rounded-md hover:bg-muted transition"
                   aria-label="Close mobile menu"
                 >
-                  Close
+                  <X />
                 </SheetClose>
               </div>
 
@@ -147,7 +175,8 @@ const Header = () => {
                   className="block"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <div className="border-2 w-full p-2 text-center rounded-xl">
+                  <div className="border-2 w-full p-2 text-center rounded-xl flex items-center justify-center gap-2 my-10">
+                    {link.icon}
                     <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                       {link.title}
                     </h3>

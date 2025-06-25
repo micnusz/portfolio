@@ -86,8 +86,8 @@
   --primary: oklch(0.45 0.1 155);            /* turkusowy / morski */
   --primary-foreground: oklch(0.98 0.02 250);
 
-  --accent: oklch(0.6 0.12 170);             /* jasny morski/zielony */
-  --accent-foreground: oklch(0.1877 0.0016 197.03)  ;  /* ciemny dla kontrastu */
+  --accent: oklch(0.9822 0.011 89.72);             /* jasny morski/zielony */
+  --accent-foreground: oklch(0.1877 0.0016 197.03);  /* ciemny dla kontrastu */
 
   /* Muted / tła pomocnicze */
   --muted: oklch(0.8797 0.011 89.72);  /* gray */
