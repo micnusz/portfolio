@@ -1,6 +1,5 @@
 "use client";
 
-import { ModeToggle } from "../ui/toggle-mode";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -50,14 +49,14 @@ const Header = () => {
         aria-label="Main navigation"
       >
         <div className="hidden sm:flex">
-          <NavigationMenu className="border-2 rounded-xl bg-background">
+          <NavigationMenu className=" rounded-xl bg-background">
             <NavigationMenuList className="flex">
               <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/" aria-label="Go to Home page">
+                <NavigationMenuLink asChild className=" rounded-l-xl">
+                  <Link href="/" aria-label="Go to Home page ">
                     <Button
                       variant="ghost"
-                      className="flex items-center gap-2 cursor-pointer"
+                      className="flex items-center gap-2 cursor-pointer "
                     >
                       <HouseIcon
                         aria-hidden="true"
@@ -91,7 +90,7 @@ const Header = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className=" rounded-r-xl">
                   <Link href="/contact" aria-label="Contact page">
                     <Button
                       variant="ghost"
