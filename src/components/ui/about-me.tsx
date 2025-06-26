@@ -11,7 +11,7 @@ const AboutMe = () => {
         </h1>
       </div>
 
-      <article>
+      <div>
         <div className="border-b w-fit pb-2">
           <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold text-background">
             Hi, my name is Michał,
@@ -29,7 +29,7 @@ const AboutMe = () => {
           </Link>
           .
         </p>
-      </article>
+      </div>
     </main>
   );
 };

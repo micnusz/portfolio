@@ -3,31 +3,36 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText, TextPlugin } from "gsap/all";
-import { BiLogoPostgresql } from "react-icons/bi";
 import { DiPostgresql } from "react-icons/di";
 import { FaNodeJs, FaReact } from "react-icons/fa";
-import { IoLogoGithub, IoLogoJavascript } from "react-icons/io";
+import { IoLogoGithub } from "react-icons/io";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiJavascript, SiTypescript } from "react-icons/si";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 gsap.registerPlugin(SplitText, TextPlugin);
 
 const HeroHomePage = () => {
   useGSAP(() => {
-    gsap.fromTo(
+    const tl = gsap.timeline();
+
+    tl.fromTo(
       "#split-name",
       {
         clipPath: "inset(100% 0% 0% 0%)",
       },
       {
         clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power1.inOut",
-        delay: 0.1,
+        ease: "power3.inOut",
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.1
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#split-lastname",
       {
         clipPath: "inset(100% 0% 0% 0%)",
@@ -35,12 +40,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power2.inOut",
-        delay: 0.1,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.1
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#split-based",
       {
         clipPath: "inset(0% 100% 0% 0%)",
@@ -48,12 +52,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power2.inOut",
-        delay: 0.5,
         duration: 1,
-        stagger: 0.1,
-      }
+      },
+      0.5
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#split-frontend",
       {
         clipPath: "inset(0% 100% 0% 0%)",
@@ -61,12 +64,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power2.inOut",
-        delay: 0.2,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.2
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#split-quote",
       {
         clipPath: "inset(0% 0% 100% 0%)",
@@ -74,12 +76,12 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power2.out",
-        delay: 1,
+        delay: 0.6,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.6
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-react",
       {
         rotation: 0, // startowa rotacja
@@ -89,12 +91,11 @@ const HeroHomePage = () => {
         opacity: 1,
         rotation: 360, // pełen obrót
         ease: "power4.out",
-        delay: 0.3,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-typescript",
       {
         rotation: -90, // startowa rotacja
@@ -104,12 +105,11 @@ const HeroHomePage = () => {
         opacity: 1,
         rotation: 0, // pełen obrót
         ease: "power3.out",
-        delay: 0.3,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-nextjs",
       {
         clipPath: "inset(0% 0% 100% 0%)",
@@ -117,12 +117,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power1.out",
-        delay: 0.3,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-github",
       {
         clipPath: "inset(100% 0% 0% 0%)",
@@ -130,12 +129,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power2.out",
-        delay: 0.3,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-postgress",
       {
         clipPath: "inset(0% 0% 0% 100%)",
@@ -143,12 +141,11 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power4.out",
-        delay: 0.3,
         duration: 1.5,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-nodejs",
       {
         rotation: -180, // startowa rotacja
@@ -158,12 +155,11 @@ const HeroHomePage = () => {
         opacity: 1,
         rotation: 360, // pełen obrót
         ease: "power3.out",
-        delay: 0.3,
         duration: 2,
-        stagger: 0.1,
-      }
+      },
+      0.3
     );
-    gsap.fromTo(
+    tl.fromTo(
       "#icon-javascript",
       {
         clipPath: "inset(0% 0% 100% 0%)",
@@ -171,17 +167,89 @@ const HeroHomePage = () => {
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "power4.out",
-        delay: 0.4,
         duration: 2,
-        stagger: 0.1,
-      }
+      },
+      0.4
     );
   }, []);
+
+  const icons = [
+    {
+      id: "reactjs",
+      title: "React.JS",
+      icon: (
+        <FaReact
+          id="icon-react"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "nextjs",
+      title: "Next.JS",
+      icon: (
+        <RiNextjsFill
+          id="icon-nextjs"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "typescript",
+      title: "Typescript",
+      icon: (
+        <SiTypescript
+          id="icon-typescript"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "github",
+      title: "Github",
+      icon: (
+        <IoLogoGithub
+          id="icon-github"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "postgress",
+      title: "PostgreSQL",
+      icon: (
+        <DiPostgresql
+          id="icon-postgress"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "nodejs",
+      title: "Node.JS",
+      icon: (
+        <FaNodeJs
+          id="icon-nodejs"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+    {
+      id: "javascript",
+      title: "Javascript",
+      icon: (
+        <SiJavascript
+          id="icon-javascript"
+          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
+        />
+      ),
+    },
+  ];
 
   return (
     <div
       id="body"
-      className="flex items-center justify-center w-full h-screen flex-col border-b-1 px-4"
+      className="flex items-center justify-center w-full h-screen flex-col border-b-1 px-6"
     >
       <div className="tracking-tight mb-40 ">
         <div className="flex items-end gap-4">
@@ -223,28 +291,14 @@ const HeroHomePage = () => {
           &quot;I create what I would like to use.&quot;
         </blockquote>
         <div id="icons" className="flex flex-row  gap-4">
-          <FaReact id="icon-react" className="w-12 h-12 md:w-18 md:h-18" />
-          <RiNextjsFill
-            id="icon-nextjs"
-            className="w-12 h-12 md:w-18 md:h-18"
-          />
-          <SiTypescript
-            id="icon-typescript"
-            className="w-12 h-12 md:w-18 md:h-18"
-          />
-          <IoLogoGithub
-            id="icon-github"
-            className="w-12 h-12 md:w-18 md:h-18"
-          />
-          <DiPostgresql
-            id="icon-postgress"
-            className="w-12 h-12 md:w-18 md:h-18"
-          />
-          <FaNodeJs id="icon-nodejs" className="w-12 h-12 md:w-18 md:h-18" />
-          <SiJavascript
-            id="icon-javascript"
-            className="w-12 h-12 md:w-18 md:h-18"
-          />
+          {icons.map((icon) => (
+            <Tooltip key={icon.id}>
+              <TooltipTrigger>{icon.icon}</TooltipTrigger>
+              <TooltipContent>
+                <p>{icon.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
         </div>
       </div>
     </div>
