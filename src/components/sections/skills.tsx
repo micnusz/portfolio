@@ -34,6 +34,8 @@ const Skills = () => {
         },
       });
     });
+
+    ScrollTrigger.refresh();
   }, []);
 
   return (

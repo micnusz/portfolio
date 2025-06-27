@@ -6,13 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Button } from "./button";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
@@ -24,6 +17,7 @@ type ProjectCardProps = {
   cardNumber: string;
   title: string;
   description: string;
+  link?: string;
   icons: {
     id: string;
     title: string;
@@ -39,6 +33,7 @@ const ProjectCard = ({
   description,
   icons,
   images,
+  link,
 }: ProjectCardProps) => {
   return (
     <Card
@@ -49,7 +44,7 @@ const ProjectCard = ({
         <span className="text-muted-foreground">{cardNumber}</span>
         <CardTitle className="scroll-m-20 text-3xl sm:text-4xl md:text-5xl leading-none font-semibold text-chart-1 mb-1">
           <a
-            href="https://tarkov-db.vercel.app/"
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Go to ${title} page`}
@@ -61,7 +56,7 @@ const ProjectCard = ({
         <CardAction className="flex">
           <div className="flex gap-4">
             <a
-              href="https://tarkov-db.vercel.app/"
+              href={link}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Go to ${title} page`}
