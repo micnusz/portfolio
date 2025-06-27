@@ -37,6 +37,7 @@ const HomePageClient = () => {
         <AboutMe />
         <Skills />
         <Projects />
+        <Footer />
       </div>
     </div>
   );

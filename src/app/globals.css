@@ -93,7 +93,7 @@
 
   /* Muted / tła pomocnicze */
   --muted: oklch(0.8797 0.011 89.72);  /* gray */
-  --muted-foreground: oklch(0.8938 0.011 89.72); /* text muted foreground */
+  --muted-foreground: oklch(0.9500 0.011 89.72); /* text muted foreground */
   --muted-background: oklch(0.200 0.0016 197.03); 
 
   /* Ramki, focus, itd. */

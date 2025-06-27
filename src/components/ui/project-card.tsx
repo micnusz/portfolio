@@ -6,8 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "./button";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { JSX } from "react";
 import Image from "next/image";
@@ -18,12 +16,22 @@ type ProjectCardProps = {
   title: string;
   description: string;
   link?: string;
+  links: {
+    id: string;
+    title: string;
+    icon: JSX.Element;
+    href: string;
+  }[];
   icons: {
     id: string;
     title: string;
     icon: JSX.Element;
   }[];
   images?: string[]; // nowy props
+  cardClassName?: string;
+  iconsClassName?: string;
+  titleClassName?: string;
+  linksClassName?: string;
 };
 
 const ProjectCard = ({
@@ -33,54 +41,56 @@ const ProjectCard = ({
   description,
   icons,
   images,
+  links,
   link,
+  cardClassName = "",
+  iconsClassName = "",
+  titleClassName = "",
+  linksClassName = "",
 }: ProjectCardProps) => {
   return (
     <Card
       id={id}
-      className="flex flex-col w-full  mx-auto border-4 bg-background text-foreground h-auto lg:h-[42rem] rounded-xl overflow-hidden"
+      className={`flex flex-col w-full  mx-auto border-4 h-auto lg:h-[42rem] rounded-xl overflow-hidden ${cardClassName}`}
     >
       <CardHeader>
-        <span className="text-muted-foreground">{cardNumber}</span>
-        <CardTitle className="scroll-m-20 text-3xl sm:text-4xl md:text-5xl leading-none font-semibold text-chart-1 mb-1">
+        <span className={`${iconsClassName}`}>({cardNumber})</span>
+        <CardTitle className="scroll-m-20 text-3xl sm:text-4xl md:text-5xl leading-none font-semibold mb-1">
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Go to ${title} page`}
-            className="text-chart-1 transition hover:text-muted-foreground hover:underline hover:underline-offset-4"
+            className={`transition hover:underline hover:underline-offset-4 ${titleClassName}`}
           >
             {title}
           </a>
         </CardTitle>
         <CardAction className="flex">
           <div className="flex gap-4">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Go to ${title} page`}
-              className="text-foreground transition hover:text-chart-1"
-            >
-              <FaExternalLinkAlt className="h-5 w-5 sm:h-6 sm:w-6" />
-            </a>
-            <a
-              href="https://tarkov-db.vercel.app/"
-              className="text-foreground transition hover:text-chart-1"
-            >
-              <FaGithub className="h-5 w-5 sm:h-6 sm:w-6" />
-            </a>
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Go to ${link.title} page`}
+                className={`transition ${linksClassName}`}
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
         </CardAction>
         <div id="icons" className="flex flex-col">
           <div className="flex pb-1">
-            <span className="text-muted-foreground">Created with:</span>
+            <span className={`${iconsClassName}`}>Created with:</span>
           </div>
           <div className="flex flex-row gap-2 flex-wrap">
             {icons?.map((icon) => (
               <Tooltip key={icon?.id}>
                 <TooltipTrigger asChild>
-                  <span className="text-muted-foreground">{icon?.icon}</span>
+                  <span className={`${iconsClassName}`}>{icon?.icon}</span>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{icon?.title}</p>

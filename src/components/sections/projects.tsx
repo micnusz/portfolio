@@ -2,7 +2,8 @@
 
 import { SiReactquery, SiReacttable, SiTypescript } from "react-icons/si";
 import ProjectCard from "../ui/project-card";
-import { FaReact } from "react-icons/fa";
+import { FaGithub, FaReact, FaExternalLinkAlt } from "react-icons/fa";
+
 import { RiNextjsFill } from "react-icons/ri";
 import { HiOutlineArrowDownOnSquareStack } from "react-icons/hi2";
 import { useGSAP } from "@gsap/react";
@@ -89,9 +90,10 @@ const Projects = () => {
         </div>
         <div
           ref={containerProjects}
-          className="relative h-screen md:py-12 gap-8 overflow-hidden border-2"
+          className="relative h-screen md:py-12 gap-8 overflow-hidden "
         >
           <div className="project-card">
+            {/* Tarkov-db */}
             <ProjectCard
               id="tarkovdb"
               cardNumber="01"
@@ -147,9 +149,32 @@ const Projects = () => {
                 "/images/tarkov4.png",
                 "/images/tarkov5.png",
               ]}
+              links={[
+                {
+                  id: "website",
+                  title: "Website",
+                  href: "https://tarkov-db.vercel.app/",
+                  icon: (
+                    <FaExternalLinkAlt className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "github",
+                  title: "Github",
+                  href: "https://github.com/micnusz/tarkov-db",
+                  icon: (
+                    <FaGithub className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+              ]}
+              cardClassName="bg-background text-foreground"
+              iconsClassName="text-muted-foreground"
+              titleClassName="hover:text-muted-foreground text-chart-1"
+              linksClassName="text-foreground hover:text-chart-1"
             />
           </div>
           <div className="project-card">
+            {/* Product Page */}
             <ProjectCard
               id="productpage"
               cardNumber="02"
@@ -198,6 +223,24 @@ const Projects = () => {
                   ),
                 },
               ]}
+              links={[
+                {
+                  id: "github",
+                  title: "Github",
+                  href: "https://github.com/micnusz/tarkov-db",
+                  icon: (
+                    <FaGithub className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "website",
+                  title: "Website",
+                  href: "https://tarkov-db.vercel.app/",
+                  icon: (
+                    <FaExternalLinkAlt className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+              ]}
               images={[
                 "/images/tarkov1.png",
                 "/images/tarkov2.png",
@@ -205,6 +248,10 @@ const Projects = () => {
                 "/images/tarkov4.png",
                 "/images/tarkov5.png",
               ]}
+              cardClassName="bg-foreground text-background"
+              iconsClassName="text-muted-background"
+              titleClassName="hover:text-muted-background text-chart-1"
+              linksClassName="text-muted-background hover:text-chart-1"
             />
           </div>
         </div>
