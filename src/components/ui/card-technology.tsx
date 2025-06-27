@@ -22,7 +22,7 @@ const CardTechnology = ({
   return (
     <Card
       id={id}
-      className="w-[35vw] h-[40vw] border-2 bg-transparent text-foreground"
+      className="w-[35rem] h-[40rem] border-4 bg-transparent text-foreground"
     >
       <CardHeader>
         <span className="text-muted-foreground">{cardNumber}</span>
@@ -31,7 +31,7 @@ const CardTechnology = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className=" min-h-32">
+        <div className="min-h-32">
           <ul className="ml-6 list-disc [&>li]:mt-2 text-2xl">
             {listItems.map((item) => (
               <li key={item.id}>{item.title}</li>

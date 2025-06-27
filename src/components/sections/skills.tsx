@@ -4,67 +4,55 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
-import CardTechnology from "../card-technology";
+import CardTechnology from "../ui/card-technology";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lastCardRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (!containerRef.current || !lastCardRef.current) return;
+    if (!containerRef.current) return;
 
-    const container = containerRef.current;
-    const lastCard = lastCardRef.current;
+    const tl = gsap.timeline();
 
-    const updateScroll = () => {
-      const containerRect = container.getBoundingClientRect();
-      const lastCardRect = lastCard.getBoundingClientRect();
-
-      const scrollDistance =
-        lastCard.offsetLeft + lastCard.offsetWidth - window.innerWidth;
-
-      gsap.to(container, {
-        x: -scrollDistance,
+    tl.set(containerRef.current, { xPercent: 20 });
+    tl.to(containerRef.current, {
+      xPercent: 0,
+      duration: 1,
+      ease: "power2.out",
+    }).add(() => {
+      gsap.to(containerRef.current, {
+        xPercent: -100,
         ease: "none",
         scrollTrigger: {
-          trigger: "#horizontal-scroll",
+          trigger: "#trigger",
           pin: true,
           scrub: 1,
-          start: "top top",
-          end: () => `${scrollDistance}px`,
+          end: "+=3000",
           markers: true,
-          invalidateOnRefresh: true,
         },
       });
-    };
-
-    updateScroll();
-    window.addEventListener("resize", updateScroll);
-
-    return () => {
-      window.removeEventListener("resize", updateScroll);
-    };
+    });
   }, []);
 
   return (
-    <main id="horizontal-scroll" className=" py-6">
+    <section id="trigger" className="py-6 md:px-20">
       <div className="pb-10">
-        <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none px-4 md:px-10">
+        <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none ">
           Skills:
         </h1>
       </div>
 
-      <section className="relative overflow-hidden">
+      <div>
         <div className="pb-6">
-          <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold px-4 md:px-10">
+          <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold">
             Technologies that I use:
           </h3>
         </div>
         <div
           ref={containerRef}
-          className="flex h-full w-fit gap-8 will-change-transform"
+          className="flex h-screen md:w-[300vw] gap-8 overflow-hidden"
         >
           <CardTechnology
             id="card-frontend"
@@ -115,22 +103,21 @@ const Skills = () => {
             description="I use these tools to stay productive, keep my code clean and work efficiently."
             listItems={[{ id: "aws", title: "Amazon Web Services" }]}
           />
-          <div ref={lastCardRef}>
-            <CardTechnology
-              id="card-api"
-              cardNumber="06"
-              title="API"
-              description="Tools and libraries that help me efficiently fetch, manage, and test data from APIs."
-              listItems={[
-                { id: "reactquery", title: "React Query" },
-                { id: "postman", title: "Postman" },
-                { id: "swagger", title: "Swagger" },
-              ]}
-            />
-          </div>
+
+          <CardTechnology
+            id="card-api"
+            cardNumber="06"
+            title="API"
+            description="Tools and libraries that help me efficiently fetch, manage, and test data from APIs."
+            listItems={[
+              { id: "reactquery", title: "React Query" },
+              { id: "postman", title: "Postman" },
+              { id: "swagger", title: "Swagger" },
+            ]}
+          />
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 };
 

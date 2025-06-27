@@ -1,5 +1,5 @@
 "use server";
-import HomePageClient from "@/components/pages/HomePageClient";
+import HomePageClient from "@/components/HomePageClient";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
