@@ -247,61 +247,63 @@ const HeroHomePage = () => {
   ];
 
   return (
-    <div
-      id="body"
-      className="flex items-center justify-center w-full h-screen flex-col border-b-1 px-6"
-    >
-      <div className="tracking-tight mb-40 ">
-        <div className="flex items-end gap-4">
+    <section id="hero-section">
+      <div
+        id="body"
+        className="flex items-center justify-center w-full h-screen flex-col border-b-1 px-6"
+      >
+        <div className="tracking-tight mb-40 ">
+          <div className="flex items-end gap-4">
+            <h1
+              id="split-name"
+              className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none origin-bottom"
+            >
+              Michał
+            </h1>
+            <div
+              id="split-based"
+              className="flex flex-col justify-end leading-none pb-1 md:pb-2 origin-left"
+            >
+              <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
+                // Based in
+              </span>
+              <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
+                Łódź, Poland
+              </span>
+            </div>
+          </div>
           <h1
-            id="split-name"
-            className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none origin-bottom"
+            id="split-lastname"
+            className="scroll-m-20 text-6xl sm:text-7xl md:text-8xl font-extrabold  text-balance leading-none origin-bottom"
           >
-            Michał
+            Nuszkiewicz
           </h1>
-          <div
-            id="split-based"
-            className="flex flex-col justify-end leading-none pb-1 md:pb-2 origin-left"
+          <h2
+            id="split-frontend"
+            className="scroll-m-20 text-5xl sm:text-6xl md:text-7xl font-semibold first:mt-0 leading-none inline-block text-chart-3"
           >
-            <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
-              // Based in
-            </span>
-            <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
-              Łódź, Poland
-            </span>
+            Front-end Developer
+          </h2>
+
+          <blockquote
+            id="split-quote"
+            className="mt-6 mb-6 border-l-2 pl-6 italic pb-3 text-md sm:text-lg md:text-xl text-muted-foreground"
+          >
+            &quot;I create what I would like to use.&quot;
+          </blockquote>
+          <div id="icons" className="flex flex-row  gap-4">
+            {icons.map((icon) => (
+              <Tooltip key={icon.id}>
+                <TooltipTrigger>{icon.icon}</TooltipTrigger>
+                <TooltipContent>
+                  <p>{icon.title}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
           </div>
         </div>
-        <h1
-          id="split-lastname"
-          className="scroll-m-20 text-6xl sm:text-7xl md:text-8xl font-extrabold  text-balance leading-none origin-bottom"
-        >
-          Nuszkiewicz
-        </h1>
-        <h2
-          id="split-frontend"
-          className="scroll-m-20 text-5xl sm:text-6xl md:text-7xl font-semibold first:mt-0 leading-none inline-block text-chart-3"
-        >
-          Front-end Developer
-        </h2>
-
-        <blockquote
-          id="split-quote"
-          className="mt-6 mb-6 border-l-2 pl-6 italic pb-3 text-md sm:text-lg md:text-xl text-muted-foreground"
-        >
-          &quot;I create what I would like to use.&quot;
-        </blockquote>
-        <div id="icons" className="flex flex-row  gap-4">
-          {icons.map((icon) => (
-            <Tooltip key={icon.id}>
-              <TooltipTrigger>{icon.icon}</TooltipTrigger>
-              <TooltipContent>
-                <p>{icon.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

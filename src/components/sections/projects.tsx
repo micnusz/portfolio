@@ -65,7 +65,7 @@ const Projects = () => {
         start: "top top",
         end: () => `+=${cards.length * 400}`,
         scrub: true,
-        markers: true,
+        markers: false,
       });
 
       ScrollTrigger.refresh();

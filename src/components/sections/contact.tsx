@@ -57,7 +57,7 @@ const Contact = () => {
         trigger: "#trigger-contact",
         start: "top 80%",
         end: "bottom bottom",
-        markers: true,
+        markers: false,
       },
     });
   }, [containerContact]);

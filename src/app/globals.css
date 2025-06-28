@@ -142,6 +142,13 @@
   padding-right: clamp(1rem, 5vw + 1rem, 5rem);
 }
 
+
+/* Navbar links */
+button.active-no-hover:hover {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

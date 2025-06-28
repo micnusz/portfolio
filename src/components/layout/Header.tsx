@@ -14,16 +14,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import { HouseIcon, MenuIcon, X } from "lucide-react";
+import { Dot, HouseIcon, MenuIcon, X } from "lucide-react";
 import { Button } from "../ui/button";
-import { JSX, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { useGSAP } from "@gsap/react";
+import { cn } from "@/lib/utils";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Header = () => {
+  const [activeSection, setActiveSection] = useState("");
+
   const navLinks: { title: string; id: string }[] = [
     {
       title: "About Me",
@@ -44,13 +49,55 @@ const Header = () => {
   ];
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isScrollingRef = useRef(false);
+
   const handleScroll = (id: string) => {
+    isScrollingRef.current = true;
+    setActiveSection(id);
+
     gsap.to(window, {
       duration: 2,
       scrollTo: { y: `#${id}` },
       ease: "power2.out",
+      onComplete: () => {
+        isScrollingRef.current = false;
+      },
     });
   };
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: "#hero-section",
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => {
+        if (!isScrollingRef.current) setActiveSection("hero-section");
+      },
+      onEnterBack: () => {
+        if (!isScrollingRef.current) setActiveSection("hero-section");
+      },
+    });
+
+    navLinks.forEach((link) => {
+      ScrollTrigger.create({
+        trigger: `#${link.id}`,
+        start: "top center",
+        end: "bottom center",
+        markers: false,
+        onEnter: () => {
+          if (!isScrollingRef.current) setActiveSection(link.id);
+        },
+        onEnterBack: () => {
+          if (!isScrollingRef.current) setActiveSection(link.id);
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-transparent">
       {/* Home on sm: */}
@@ -77,34 +124,58 @@ const Header = () => {
       </div>
 
       {/* FullScreen links */}
+
       <nav
         className="flex-grow flex justify-center"
         aria-label="Main navigation"
       >
         <div className="hidden sm:flex ">
-          <NavigationMenu className="rounded-xl bg-background border-1">
-            <NavigationMenuList className="flex">
-              <NavigationMenuItem>
-                {navLinks?.map((link) => (
-                  <NavigationMenuLink
-                    key={link.id}
-                    asChild
-                    className="rounded-l-xl"
-                  >
-                    <Button
-                      variant="ghost"
-                      className="flex items-center gap-2 cursor-pointer "
-                      onClick={() => handleScroll(link.id)}
-                    >
-                      <span className="text-xl font-semibold tracking-tight">
-                        {link.title}
-                      </span>
-                    </Button>
-                  </NavigationMenuLink>
-                ))}
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex gap-2 rounded-full p-2">
+            <Button
+              key="hero-section"
+              variant="ghost"
+              className={cn(
+                "flex items-center gap-2 cursor-pointer transition-opacity duration-300 rounded-full w-10 h-10",
+                activeSection === "hero-section"
+                  ? "bg-muted-foreground text-primary opacity-100 pointer-events-auto"
+                  : "opacity-0 pointer-events-none"
+              )}
+              onClick={() => handleScroll("hero-section")}
+            >
+              <Dot
+                className="w-6 h-6"
+                aria-hidden={activeSection !== "hero-section"}
+              />
+            </Button>
+          </div>
+          <div className="flex gap-2 rounded-full bg-background border p-2">
+            {navLinks.map((link) => (
+              <Button
+                key={link.id}
+                variant="ghost"
+                className={cn(
+                  "flex items-center gap-2 cursor-pointer transition rounded-full",
+                  activeSection === link.id
+                    ? "bg-muted-foreground text-primary"
+                    : "hover:text-chart-1"
+                )}
+                onClick={() => handleScroll(link.id)}
+              >
+                <span className="text-xl font-semibold tracking-tight">
+                  {link.title}
+                </span>
+              </Button>
+            ))}
+          </div>
+          <div className="flex gap-2 rounded-full p-2">
+            <Button
+              variant="ghost"
+              disabled
+              className="w-10 h-10 opacity-0 pointer-events-none"
+            >
+              {/* Pusta zawartość */}
+            </Button>
+          </div>
         </div>
       </nav>
 
