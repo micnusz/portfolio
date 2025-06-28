@@ -50,16 +50,21 @@ const Contact = () => {
   useGSAP(() => {
     if (!containerContact.current) return;
 
-    gsap.from(containerContact.current, {
-      yPercent: 10,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: "#trigger-contact",
-        start: "top 80%",
-        end: "bottom bottom",
-        markers: false,
-      },
-    });
+    gsap.fromTo(
+      containerContact.current,
+      { yPercent: 10 },
+      {
+        yPercent: 0,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: "#trigger-contact",
+          start: "top 80%",
+          end: "bottom 80%",
+          scrub: true, // <- to jest klucz!
+          markers: true,
+        },
+      }
+    );
   }, [containerContact]);
 
   return (
@@ -85,7 +90,7 @@ const Contact = () => {
               </a>
             </div>
           </div>
-          <div className="w-1/2 flex gap-2 md:gap-8">
+          <div className="w-1/2 flex gap-4 md:gap-8">
             <div className="flex flex-col">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-chart-1 tracking-tight underline underline-offset-4">
                 Explore:

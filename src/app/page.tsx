@@ -4,8 +4,8 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Home - Michał Nuszkiewicz",
-    description: "Home page",
+    title: "Michał Nuszkiewicz",
+    description: "Portfolio app created by Michał Nuszkiewicz",
   };
 }
 

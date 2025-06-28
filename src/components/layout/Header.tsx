@@ -23,6 +23,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import { cn } from "@/lib/utils";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Separator } from "../ui/separator";
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -98,31 +99,13 @@ const Header = () => {
     };
   }, []);
 
+  const handleClick = (id: string) => {
+    setMobileOpen(false);
+    handleScroll(id);
+  };
+
   return (
     <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-transparent">
-      {/* Home on sm: */}
-      <div className="flex sm:hidden">
-        <NavigationMenu>
-          <NavigationMenuList className="flex">
-            <NavigationMenuItem className="rounded-xl bg-background">
-              <NavigationMenuLink asChild>
-                <Link href="/" aria-label="Go to Home page">
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
-                    <HouseIcon aria-hidden="true" />
-                    <span className="text-xl font-semibold tracking-tight">
-                      Home
-                    </span>
-                  </Button>
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-
       {/* FullScreen links */}
 
       <nav
@@ -135,9 +118,9 @@ const Header = () => {
               key="hero-section"
               variant="ghost"
               className={cn(
-                "flex items-center gap-2 cursor-pointer transition-opacity duration-300 rounded-full w-10 h-10",
+                "flex items-center gap-2 transition-opacity duration-300 rounded-full w-10 h-10",
                 activeSection === "hero-section"
-                  ? "bg-muted-foreground text-primary opacity-100 pointer-events-auto"
+                  ? "bg-chart-1 text-chart-1 opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none"
               )}
               onClick={() => handleScroll("hero-section")}
@@ -156,7 +139,7 @@ const Header = () => {
                 className={cn(
                   "flex items-center gap-2 cursor-pointer transition rounded-full",
                   activeSection === link.id
-                    ? "bg-muted-foreground text-primary"
+                    ? "bg-muted-foreground text-muted-background"
                     : "hover:text-chart-1"
                 )}
                 onClick={() => handleScroll(link.id)}
@@ -180,15 +163,19 @@ const Header = () => {
       </nav>
 
       {/* Mobile hamburger + sheet */}
-      <div className="flex sm:hidden items-center">
+      <div className="flex sm:hidden items-center py-2 ">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-          <SheetTrigger asChild className="mx-4">
-            <MenuIcon className="w-8 h-8" />
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex items-center gap-2 cursor-pointer bg-background"
+            >
+              <span className="text-xl font-semibold tracking-tight">Menu</span>
+            </Button>
           </SheetTrigger>
-
           <SheetContent
-            side="top"
-            className="bg-background w-screen [&>button]:hidden"
+            side="right"
+            className="bg-transparent w-[15rem] max-w-1/2 max-h-[10rem] border-none [&>button]:hidden"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -197,33 +184,33 @@ const Header = () => {
             <SheetTitle>
               <VisuallyHidden>Mobile Navigation</VisuallyHidden>
             </SheetTitle>
-            <div className="px-4 space-y-6">
+            <div className="px-4 space-y-6 bg-foreground rounded-xl">
               <div className="flex justify-end">
                 <SheetClose
-                  className="p-2 rounded-md hover:bg-muted transition"
+                  className="p-2 hover:bg-muted transition text-background"
                   aria-label="Close mobile menu"
                 >
-                  <X />
+                  <span className="text-xl font-semibold tracking-tight">
+                    Close
+                  </span>
                 </SheetClose>
               </div>
 
               {/* Linki */}
-
-              {navLinks.map((link) => (
-                <Link
-                  key={link.title}
-                  href={link.href}
-                  className="block"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="border-2 w-full p-2 text-center rounded-xl flex items-center justify-center gap-2 my-10">
-                    {link.icon}
-                    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+              <Separator className="p-0 m-0 mb-2" />
+              <div className="flex flex-col  gap-4 bg-foreground  px-4 pb-14  justify-end">
+                {navLinks.map((link) => (
+                  <Button
+                    variant="ghost"
+                    key={link.title}
+                    onClick={() => handleClick(link.id)}
+                  >
+                    <p className="text-muted-background scroll-m-20 text-2xl font-semibold tracking-tight">
                       {link.title}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
+                    </p>
+                  </Button>
+                ))}
+              </div>
             </div>
           </SheetContent>
         </Sheet>
