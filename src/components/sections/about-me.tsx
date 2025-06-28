@@ -4,7 +4,10 @@ import Link from "next/link";
 
 const AboutMe = () => {
   return (
-    <main className="flex  w-full h-screen flex-col border-b-1 px-20 py-6 bg-muted-foreground">
+    <main
+      id="about-me"
+      className="flex  w-full h-screen flex-col border-b-1 px-20 py-6 bg-muted-foreground"
+    >
       <div className="pb-10">
         <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none text-background">
           About Me:

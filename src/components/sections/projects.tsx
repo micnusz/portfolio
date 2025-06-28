@@ -50,7 +50,7 @@ const Projects = () => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: "#trigger-projects",
-              start: () => `top+=${index * 200} top`,
+              start: () => `top+=${index * 400} top`,
               end: () => `+=300`,
               scrub: true,
               markers: false,
@@ -75,22 +75,23 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="py-6 px-4 md:px-20 bg-muted-foreground text-background min-h-screen md:min-h-[150vh]">
-      <div className="pb-10">
-        <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none ">
-          Projects:
-        </h1>
+    <section
+      id="trigger-projects"
+      className="py-6 px-fluid bg-muted-foreground text-background min-h-screen  "
+    >
+      <div className="pb-2 md:pb-6 ">
+        <h1 className="text-fluid-section leading-none ">Projects:</h1>
       </div>
 
-      <div id="trigger-projects">
-        <div className="pb-6">
-          <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold">
+      <div>
+        <div className="pb-2 md:pb-6 ">
+          <h3 className="scroll-m-20 text-fluid-title leading-none font-bold">
             Projects that i made:
           </h3>
         </div>
         <div
           ref={containerProjects}
-          className="relative h-screen md:py-12 gap-8 overflow-hidden "
+          className="relative min-h-screen md:py-12 gap-8 overflow-hidden  "
         >
           <div className="project-card">
             {/* Tarkov-db */}
@@ -252,6 +253,86 @@ const Projects = () => {
               iconsClassName="text-muted-background"
               titleClassName="hover:text-muted-background text-chart-1"
               linksClassName="text-muted-background hover:text-chart-1"
+            />
+          </div>
+          <div className="project-card">
+            <ProjectCard
+              id="testcard"
+              cardNumber="03"
+              title="Test Card"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+              link="https://github.com/micnusz/DummyJSON-Products-Page"
+              icons={[
+                {
+                  id: "typescript",
+                  title: "Typescript",
+                  icon: (
+                    <SiTypescript className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "reactjs",
+                  title: "React.JS",
+                  icon: <FaReact className="text-xl sm:text-2xl md:text-3xl" />,
+                },
+                {
+                  id: "reactquery",
+                  title: "TanStack Query",
+                  icon: (
+                    <SiReactquery className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "reacttable",
+                  title: "TanStack Table",
+                  icon: (
+                    <SiReacttable className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "nextjs",
+                  title: "Next.JS",
+                  icon: (
+                    <RiNextjsFill className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "api",
+                  title: "API",
+                  icon: (
+                    <HiOutlineArrowDownOnSquareStack className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+              ]}
+              links={[
+                {
+                  id: "github",
+                  title: "Github",
+                  href: "https://github.com/micnusz/tarkov-db",
+                  icon: (
+                    <FaGithub className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+                {
+                  id: "website",
+                  title: "Website",
+                  href: "https://tarkov-db.vercel.app/",
+                  icon: (
+                    <FaExternalLinkAlt className="text-xl sm:text-2xl md:text-3xl" />
+                  ),
+                },
+              ]}
+              images={[
+                "/images/tarkov1.png",
+                "/images/tarkov2.png",
+                "/images/tarkov3.png",
+                "/images/tarkov4.png",
+                "/images/tarkov5.png",
+              ]}
+              cardClassName="bg-primary text-muted-foreground"
+              iconsClassName="text-muted-foreground"
+              titleClassName="hover:text-muted-background text-foreground"
+              linksClassName="text-muted-foreground hover:text-chart-1"
             />
           </div>
         </div>

@@ -39,16 +39,14 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="trigger" className="py-6 md:px-20">
+    <section id="trigger" className="py-6 px-fluid">
       <div className="pb-10">
-        <h1 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-none ">
-          Skills:
-        </h1>
+        <h1 className="text-fluid-section leading-none ">Skills:</h1>
       </div>
 
       <div>
         <div className="pb-6">
-          <h3 className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold">
+          <h3 className="scroll-m-20 text-fluid-title leading-none font-bold">
             Technologies that I use:
           </h3>
         </div>

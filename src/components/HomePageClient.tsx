@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Footer from "./layout/Footer";
 import AboutMe from "./sections/about-me";
 import HeroHomePage from "./sections/hero-home-page";
 import Skills from "./sections/skills";
@@ -10,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import gsap from "gsap";
 import Projects from "./sections/projects";
+import Contact from "./sections/contact";
+import Footer from "./layout/Footer";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -37,6 +38,7 @@ const HomePageClient = () => {
         <AboutMe />
         <Skills />
         <Projects />
+        <Contact />
         <Footer />
       </div>
     </div>

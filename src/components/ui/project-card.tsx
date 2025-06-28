@@ -51,7 +51,7 @@ const ProjectCard = ({
   return (
     <Card
       id={id}
-      className={`flex flex-col w-full  mx-auto border-4 h-auto lg:h-[42rem] rounded-xl overflow-hidden ${cardClassName}`}
+      className={`flex flex-col w-full  min-h-[30rem] mx-auto border-4 ] rounded-xl overflow-hidden ${cardClassName}`}
     >
       <CardHeader>
         <span className={`${iconsClassName}`}>({cardNumber})</span>
@@ -61,7 +61,7 @@ const ProjectCard = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Go to ${title} page`}
-            className={`transition hover:underline hover:underline-offset-4 ${titleClassName}`}
+            className={`transition duration-200 ease-in-out hover:underline hover:underline-offset-4 ${titleClassName}`}
           >
             {title}
           </a>
@@ -75,7 +75,7 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Go to ${link.title} page`}
-                className={`transition ${linksClassName}`}
+                className={`transition duration-200 ease-in-out ${linksClassName}`}
               >
                 {link.icon}
               </a>

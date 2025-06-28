@@ -25,8 +25,12 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "../ui/button";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Header = () => {
   const navLinks: { href: string; title: string; icon: JSX.Element }[] = [
@@ -44,8 +48,22 @@ const Header = () => {
   ];
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  // Funkcja scrollująca do danego refa
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: ref.current, offsetY: 70 }, // 70px to np. wysokość navbaru
+        ease: "power2.out",
+      });
+    }
+  };
   return (
-    <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2  bg-transparent">
+    <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-transparent">
       {/* Home on sm: */}
       <div className="flex sm:hidden">
         <NavigationMenu>
@@ -56,6 +74,7 @@ const Header = () => {
                   <Button
                     variant="ghost"
                     className="flex items-center gap-2 cursor-pointer"
+                    onClick={() => scrollToSection(aboutRef)}
                   >
                     <HouseIcon aria-hidden="true" />
                     <span className="text-xl font-semibold tracking-tight">
@@ -73,7 +92,7 @@ const Header = () => {
         className="flex-grow flex justify-center"
         aria-label="Main navigation"
       >
-        <div className="hidden sm:flex">
+        <div className="hidden sm:flex ">
           <NavigationMenu className=" rounded-xl bg-background border-1">
             <NavigationMenuList className="flex">
               <NavigationMenuItem>
@@ -136,7 +155,6 @@ const Header = () => {
           </NavigationMenu>
         </div>
       </nav>
-      <div>{/*<ModeToggle />*/}</div>
 
       {/* Mobile hamburger + sheet */}
       <div className="flex sm:hidden items-center">
