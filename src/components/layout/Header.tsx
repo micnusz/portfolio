@@ -14,18 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import {
-  Briefcase,
-  BriefcaseIcon,
-  HomeIcon,
-  HouseIcon,
-  Mail,
-  MailIcon,
-  MenuIcon,
-  X,
-} from "lucide-react";
+import { HouseIcon, MenuIcon, X } from "lucide-react";
 import { Button } from "../ui/button";
-import { useRef, useState } from "react";
+import { JSX, useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -33,34 +24,32 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Header = () => {
-  const navLinks: { href: string; title: string; icon: JSX.Element }[] = [
-    { href: "/", title: "Home", icon: <HomeIcon className="w-5 h-5" /> },
+  const navLinks: { title: string; id: string }[] = [
     {
-      href: "/projects",
-      title: "Projects",
-      icon: <BriefcaseIcon className="w-5 h-5" />,
+      title: "About Me",
+      id: "about-me-section",
     },
     {
-      href: "/contact",
+      title: "Technology",
+      id: "technology-section",
+    },
+    {
+      title: "Projects",
+      id: "projects-section",
+    },
+    {
       title: "Contact",
-      icon: <MailIcon className="w-5 h-5" />,
+      id: "contact-section",
     },
   ];
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const aboutRef = useRef(null);
-  const projectsRef = useRef(null);
-  const contactRef = useRef(null);
-
-  // Funkcja scrollująca do danego refa
-  const scrollToSection = (ref) => {
-    if (ref.current) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: ref.current, offsetY: 70 }, // 70px to np. wysokość navbaru
-        ease: "power2.out",
-      });
-    }
+  const handleScroll = (id: string) => {
+    gsap.to(window, {
+      duration: 2,
+      scrollTo: { y: `#${id}` },
+      ease: "power2.out",
+    });
   };
   return (
     <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-transparent">
@@ -74,7 +63,6 @@ const Header = () => {
                   <Button
                     variant="ghost"
                     className="flex items-center gap-2 cursor-pointer"
-                    onClick={() => scrollToSection(aboutRef)}
                   >
                     <HouseIcon aria-hidden="true" />
                     <span className="text-xl font-semibold tracking-tight">
@@ -88,68 +76,32 @@ const Header = () => {
         </NavigationMenu>
       </div>
 
+      {/* FullScreen links */}
       <nav
         className="flex-grow flex justify-center"
         aria-label="Main navigation"
       >
         <div className="hidden sm:flex ">
-          <NavigationMenu className=" rounded-xl bg-background border-1">
+          <NavigationMenu className="rounded-xl bg-background border-1">
             <NavigationMenuList className="flex">
               <NavigationMenuItem>
-                <NavigationMenuLink asChild className=" rounded-l-xl">
-                  <Link href="/" aria-label="Go to Home page ">
+                {navLinks?.map((link) => (
+                  <NavigationMenuLink
+                    key={link.id}
+                    asChild
+                    className="rounded-l-xl"
+                  >
                     <Button
                       variant="ghost"
                       className="flex items-center gap-2 cursor-pointer "
+                      onClick={() => handleScroll(link.id)}
                     >
-                      <HouseIcon
-                        aria-hidden="true"
-                        className="hover:text-background"
-                      />
                       <span className="text-xl font-semibold tracking-tight">
-                        Home
+                        {link.title}
                       </span>
                     </Button>
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/projects" aria-label="View Projects">
-                    <Button
-                      variant="ghost"
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
-                      <Briefcase
-                        aria-hidden="true"
-                        className="hover:text-background"
-                      />
-                      <span className="text-xl font-semibold tracking-tight">
-                        Projects
-                      </span>
-                    </Button>
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild className=" rounded-r-xl">
-                  <Link href="/contact" aria-label="Contact page">
-                    <Button
-                      variant="ghost"
-                      className="flex items-center gap-2 cursor-pointer "
-                    >
-                      <Mail
-                        aria-hidden="true"
-                        className="hover:text-background"
-                      />
-                      <span className="text-xl font-semibold tracking-tight">
-                        Contact
-                      </span>
-                    </Button>
-                  </Link>
-                </NavigationMenuLink>
+                  </NavigationMenuLink>
+                ))}
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

@@ -5,7 +5,7 @@ import Link from "next/link";
 const AboutMe = () => {
   return (
     <main
-      id="about-me"
+      id="about-me-section"
       className="flex  w-full h-screen flex-col border-b-1 px-20 py-6 bg-muted-foreground"
     >
       <div className="pb-10">
