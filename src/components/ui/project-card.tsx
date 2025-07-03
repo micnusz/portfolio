@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { JSX } from "react";
-import Image from "next/image";
 
 type ProjectCardProps = {
   id?: string;
@@ -40,7 +39,6 @@ const ProjectCard = ({
   title,
   description,
   icons,
-  images,
   links,
   link,
   cardClassName = "",

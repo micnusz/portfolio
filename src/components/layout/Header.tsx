@@ -1,12 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetClose,
@@ -14,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
-import { Dot, HouseIcon, MenuIcon, X } from "lucide-react";
+import { Dot } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";

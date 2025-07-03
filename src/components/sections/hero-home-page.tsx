@@ -265,7 +265,7 @@ const HeroHomePage = () => {
               className="flex flex-col justify-end leading-none pb-1 md:pb-2 origin-left"
             >
               <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
-                // Based in
+                {`// Based in`}
               </span>
               <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
                 Łódź, Poland

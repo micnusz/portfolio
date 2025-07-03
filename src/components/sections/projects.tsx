@@ -19,9 +19,9 @@ const Projects = () => {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".project-card");
+      const cards = gsap.utils.toArray<HTMLElement>(".project-card");
 
-      cards.forEach((card: any, index) => {
+      cards.forEach((card, index) => {
         if (index === 0) {
           gsap.set(card, {
             position: "absolute",

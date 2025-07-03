@@ -22,7 +22,7 @@ const CardTechnology = ({
   return (
     <Card
       id={id}
-      className="w-[35rem] h-[40rem] border-4 bg-transparent text-foreground"
+      className="w-screen sm:w-[35rem] h-[40rem] border-4 bg-transparent text-foreground"
     >
       <CardHeader>
         <span className="text-muted-foreground">{cardNumber}</span>
