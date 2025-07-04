@@ -263,11 +263,12 @@ const Projects = () => {
                 ]}
                 cardClassName="bg-foreground text-muted-background"
                 iconsClassName="text-muted-background"
-                titleClassName="hover:text-chart-1 text-background underline underline-offset-4"
+                titleClassName="hover:text-chart-1 text-background "
                 linksClassName="text-muted-background hover:text-chart-1"
               />
             </div>
             <div className="project-card">
+              {/* Project Taskboard */}
               <ProjectCard
                 id="taskboard"
                 cardNumber="03"
@@ -352,8 +353,70 @@ const Projects = () => {
                 ]}
                 cardClassName="bg-chart-1 text-muted-background"
                 iconsClassName="text-muted-background"
-                titleClassName="hover:text-muted-foreground text-background underline underline-offset-4"
+                titleClassName="hover:text-muted-foreground text-background "
                 linksClassName="text-muted-background hover:text-muted-foreground"
+              />
+            </div>
+            <div className="project-card">
+              {/* Portfolio */}
+              <ProjectCard
+                id="portfolio"
+                cardNumber="04"
+                title="Portfolio"
+                description="shit text. "
+                link="https://github.com/micnusz/portfolio"
+                icons={[
+                  {
+                    id: "typescript",
+                    title: "Typescript",
+                    icon: (
+                      <SiTypescript className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                  {
+                    id: "reactjs",
+                    title: "React.JS",
+                    icon: (
+                      <FaReact className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                  {
+                    id: "nextjs",
+                    title: "Next.JS",
+                    icon: (
+                      <RiNextjsFill className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                ]}
+                links={[
+                  {
+                    id: "github",
+                    title: "Github",
+                    href: "https://github.com/micnusz/portfolio",
+                    icon: (
+                      <FaGithub className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                  {
+                    id: "website",
+                    title: "Website",
+                    href: "https://github.com/micnusz/portfolio",
+                    icon: (
+                      <FaExternalLinkAlt className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                ]}
+                images={[
+                  "/images/tarkov1.png",
+                  "/images/tarkov2.png",
+                  "/images/tarkov3.png",
+                  "/images/tarkov4.png",
+                  "/images/tarkov5.png",
+                ]}
+                cardClassName="bg-chart-3 text-muted-foreground"
+                iconsClassName="text-muted-foreground"
+                titleClassName="hover:text-muted-background text-foreground "
+                linksClassName="text-muted-foreground hover:text-muted-background"
               />
             </div>
           </div>

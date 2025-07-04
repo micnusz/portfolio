@@ -100,7 +100,6 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-transparent">
       {/* FullScreen links */}
-
       <nav
         className="flex-grow flex justify-center"
         aria-label="Main navigation"
@@ -156,19 +155,21 @@ const Header = () => {
       </nav>
 
       {/* Mobile hamburger + sheet */}
-      <div className="flex sm:hidden items-center py-2 ">
+      <div className="flex sm:hidden items-center">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>
             <Button
               variant="ghost"
-              className="flex items-center gap-2 cursor-pointer bg-background"
+              className="cursor-pointer bg-muted-foreground border-1"
             >
-              <span className="text-xl font-semibold tracking-tight">Menu</span>
+              <span className="text-fluid-sm font-semibold tracking-tight text-muted-background">
+                Menu
+              </span>
             </Button>
           </SheetTrigger>
           <SheetContent
-            side="right"
-            className="bg-transparent w-[15rem] max-w-1/2 max-h-[10rem] border-none [&>button]:hidden"
+            side="top"
+            className="w-full max-h-[10rem] border-none [&>button]:hidden m-0 p-0"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -177,10 +178,10 @@ const Header = () => {
             <SheetTitle>
               <VisuallyHidden>Mobile Navigation</VisuallyHidden>
             </SheetTitle>
-            <div className="px-4 space-y-6 bg-foreground rounded-xl">
+            <div className="px-4 space-y-4 bg-foreground rounded-xl">
               <div className="flex justify-end">
                 <SheetClose
-                  className="p-2 hover:bg-muted transition text-background"
+                  className="hover:bg-muted transition text-background"
                   aria-label="Close mobile menu"
                 >
                   <span className="text-xl font-semibold tracking-tight">
@@ -190,19 +191,20 @@ const Header = () => {
               </div>
 
               {/* Linki */}
-              <Separator className="p-0 m-0 mb-2" />
-              <div className="flex flex-col  gap-4 bg-foreground  px-4 pb-14  justify-end">
+              <Separator />
+              <div className="flex flex-col gap-4 bg-foreground">
                 {navLinks.map((link) => (
                   <Button
                     variant="ghost"
                     key={link.title}
                     onClick={() => handleClick(link.id)}
                   >
-                    <p className="text-muted-background scroll-m-20 text-2xl font-semibold tracking-tight">
+                    <p className="text-muted-background  text-fluid-md font-semibold tracking-tight">
                       {link.title}
                     </p>
                   </Button>
                 ))}
+                <Button>Resume</Button>
               </div>
             </div>
           </SheetContent>

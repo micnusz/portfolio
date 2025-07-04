@@ -268,10 +268,13 @@ const HeroHomePage = () => {
           </blockquote>
           <div
             id="icons"
-            className="flex flex-row gap-2 md:gap-4 border-2 justify-center"
+            className="flex flex-row gap-2 md:gap-4 justify-center"
           >
             {icons.map((icon) => (
-              <span key={icon.id} className="text-fluid-icons">
+              <span
+                key={icon.id}
+                className="text-fluid-icons transition duration-300 ease-in-out hover:scale-110"
+              >
                 <Tooltip>
                   <TooltipTrigger>{icon.icon}</TooltipTrigger>
                   <TooltipContent>

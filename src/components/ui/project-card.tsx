@@ -99,7 +99,7 @@ const ProjectCard = ({
         </div>
       </CardHeader>
 
-      <CardContent className="flex flex-col md:flex-row flex-grow overflow-hidden pt-6">
+      <CardContent className="flex flex-col md:flex-row flex-grow overflow-hidden ">
         <div className="w-full md:w-1/2">
           <p className="leading-7 text-lg sm:text-xl md:text-2xl">
             {description}
