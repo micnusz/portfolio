@@ -5,7 +5,6 @@ import {
   SiPrisma,
   SiReactquery,
   SiReacttable,
-  SiShadcnui,
   SiTypescript,
 } from "react-icons/si";
 import ProjectCard from "../ui/project-card";
@@ -179,7 +178,7 @@ const Projects = () => {
                   },
                 ]}
                 cardClassName="bg-background text-foreground"
-                iconsClassName="text-muted-foreground"
+                iconsClassName="text-muted-foreground hover:text-chart-1"
                 titleClassName="hover:text-muted-foreground text-chart-1"
                 linksClassName="text-foreground hover:text-chart-1"
               />
@@ -262,9 +261,10 @@ const Projects = () => {
                   "/images/tarkov5.png",
                 ]}
                 cardClassName="bg-foreground text-muted-background"
-                iconsClassName="text-muted-background"
-                titleClassName="hover:text-chart-1 text-background "
+                iconsClassName="text-muted-background hover:text-chart-1"
+                titleClassName="hover:text-muted-background text-chart-1 "
                 linksClassName="text-muted-background hover:text-chart-1"
+                pageNumberClassName="text-muted-background"
               />
             </div>
             <div className="project-card">
@@ -351,10 +351,11 @@ const Projects = () => {
                   "/images/tarkov4.png",
                   "/images/tarkov5.png",
                 ]}
-                cardClassName="bg-chart-1 text-muted-background"
-                iconsClassName="text-muted-background"
+                cardClassName="bg-chart-1 text-muted-foreground"
+                iconsClassName="text-muted-foreground hover:text-muted-background"
                 titleClassName="hover:text-muted-foreground text-background "
-                linksClassName="text-muted-background hover:text-muted-foreground"
+                linksClassName="text-muted-foreground hover:text-muted-background"
+                pageNumberClassName="text-muted-foreground"
               />
             </div>
             <div className="project-card">

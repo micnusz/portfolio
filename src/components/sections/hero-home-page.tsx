@@ -7,7 +7,7 @@ import { DiPostgresql } from "react-icons/di";
 import { FaAws, FaNodeJs, FaReact } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { RiNextjsFill } from "react-icons/ri";
-import { SiJavascript, SiPrisma, SiTypescript } from "react-icons/si";
+import { SiPrisma, SiTypescript } from "react-icons/si";
 import {
   Tooltip,
   TooltipContent,
@@ -273,7 +273,7 @@ const HeroHomePage = () => {
             {icons.map((icon) => (
               <span
                 key={icon.id}
-                className="text-fluid-icons transition duration-300 ease-in-out hover:scale-110"
+                className="text-fluid-icons transition duration-300 ease-in-out hover:scale-110 hover:text-chart-1"
               >
                 <Tooltip>
                   <TooltipTrigger>{icon.icon}</TooltipTrigger>

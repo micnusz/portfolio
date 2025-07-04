@@ -64,21 +64,31 @@ const Skills = () => {
               <CardTechnology
                 id="card-frontend"
                 cardNumber="01"
+                title="Languages"
+                listItems={[
+                  { id: "typescript", title: "Typescript" },
+                  { id: "javascript", title: "Javascript" },
+                ]}
+              />
+            </div>
+            <div className="technology-card">
+              <CardTechnology
+                id="card-frontend"
+                cardNumber="02"
                 title="Front-end"
-                description="They help me build web apps that are fast, easy to maintain, and enjoyable to work on."
                 listItems={[
                   { id: "reactjs", title: "React.js" },
-                  { id: "typescript", title: "TypeScript" },
                   { id: "nextjs", title: "Next.js" },
+                  { id: "reactquery", title: "TanStack Query" },
+                  { id: "reacttable", title: "TanStack Table" },
                 ]}
               />
             </div>
             <div className="technology-card">
               <CardTechnology
                 id="card-backend"
-                cardNumber="02"
+                cardNumber="03"
                 title="Back-end"
-                description="I use them to build APIs and back-end logic that are fast, simple, and ready to scale."
                 listItems={[
                   { id: "nodejs", title: "Node.js" },
                   { id: "restapi", title: "REST API's" },
@@ -88,47 +98,23 @@ const Skills = () => {
             <div className="technology-card">
               <CardTechnology
                 id="card-database"
-                cardNumber="03"
-                title="Database"
-                description="I work with both relational and NoSQL databases to design scalable and consistent data layers."
+                cardNumber="04"
+                title="Database & ORM"
                 listItems={[
                   { id: "postgresql", title: "PostgreSQL" },
                   { id: "mysql", title: "MySQL" },
-                  { id: "mongodb", title: "MongoDB" },
+                  { id: "prisma", title: "Prisma" },
                 ]}
               />
             </div>
             <div className="technology-card">
               <CardTechnology
                 id="card-control"
-                cardNumber="04"
-                title="Version Control"
-                description="I use these tools to stay productive, keep my code clean and work efficiently."
+                cardNumber="05"
+                title="Tools & DevOps"
                 listItems={[
                   { id: "git", title: "Git" },
-                  { id: "github", title: "GitHub" },
-                ]}
-              />
-            </div>
-            <div className="technology-card">
-              <CardTechnology
-                id="card-cloud"
-                cardNumber="05"
-                title="Cloud Service"
-                description="I use these tools to stay productive, keep my code clean and work efficiently."
-                listItems={[{ id: "aws", title: "Amazon Web Services" }]}
-              />
-            </div>
-            <div className="technology-card">
-              <CardTechnology
-                id="card-api"
-                cardNumber="06"
-                title="API"
-                description="Tools and libraries that help me efficiently fetch, manage, and test data from APIs."
-                listItems={[
-                  { id: "reactquery", title: "React Query" },
-                  { id: "postman", title: "Postman" },
-                  { id: "swagger", title: "Swagger" },
+                  { id: "aws", title: "AWS" },
                 ]}
               />
             </div>

@@ -21,16 +21,16 @@ const AboutMe = () => {
           </h3>
         </div>
         <p className="leading-9 [&:not(:first-child)]:mt-6 text-xl sm:text-2xl md:text-3xl w-full md:w-2/3 text-background">
-          I'm a 20-year-old front-end developer based in Łódź, Poland. Although
-          I don't have professional experience yet, you can see examples of my
-          work in the{" "}
+          I&apos;m a 20-year-old front-end developer based in Łódź, Poland.
+          Although I don&apos;t have professional experience yet, you can see
+          examples of my work in the{" "}
           <Link href={"/projects"}>
             <span className="text-chart-1 hover:underline hover:text-chart-3">
               Projects
             </span>
           </Link>{" "}
           section. I am currently looking for a full-time front-end position,
-          preferably remote, but I’m also open to relocation.
+          preferably remote, but I&apos;m also open to relocation.
         </p>
       </div>
     </main>

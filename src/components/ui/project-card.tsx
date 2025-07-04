@@ -26,11 +26,12 @@ type ProjectCardProps = {
     title: string;
     icon: JSX.Element;
   }[];
-  images?: string[]; // nowy props
+  images?: string[];
   cardClassName?: string;
   iconsClassName?: string;
   titleClassName?: string;
   linksClassName?: string;
+  pageNumberClassName?: string;
 };
 
 const ProjectCard = ({
@@ -42,6 +43,7 @@ const ProjectCard = ({
   links,
   link,
   cardClassName = "",
+  pageNumberClassName = "",
   iconsClassName = "",
   titleClassName = "",
   linksClassName = "",
@@ -52,7 +54,7 @@ const ProjectCard = ({
       className={`flex flex-col w-full  min-h-[30rem] mx-auto border-4 ] rounded-xl overflow-hidden ${cardClassName}`}
     >
       <CardHeader>
-        <span className={`${iconsClassName}`}>({cardNumber})</span>
+        <span className={`${pageNumberClassName}`}>({cardNumber})</span>
         <CardTitle className="scroll-m-20 text-3xl sm:text-4xl md:text-5xl leading-none font-semibold mb-1">
           <a
             href={link}
@@ -82,13 +84,17 @@ const ProjectCard = ({
         </CardAction>
         <div id="icons" className="flex flex-col">
           <div className="flex pb-1">
-            <span className={`${iconsClassName}`}>Created with:</span>
+            <span className={`${iconsClassName} `}>Created with:</span>
           </div>
           <div className="flex flex-row gap-2 flex-wrap">
             {icons?.map((icon) => (
               <Tooltip key={icon?.id}>
                 <TooltipTrigger asChild>
-                  <span className={`${iconsClassName}`}>{icon?.icon}</span>
+                  <span
+                    className={`${iconsClassName} transition duration-150 ease-in-out`}
+                  >
+                    {icon?.icon}
+                  </span>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{icon?.title}</p>

@@ -5,7 +5,7 @@ type CardTechnologyProps = {
   id?: string;
   cardNumber: string;
   title: string;
-  description: string;
+  description?: string;
   listItems: {
     title: string;
     id: string;
