@@ -4,10 +4,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText, TextPlugin } from "gsap/all";
 import { DiPostgresql } from "react-icons/di";
-import { FaNodeJs, FaReact } from "react-icons/fa";
+import { FaAws, FaNodeJs, FaReact } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { RiNextjsFill } from "react-icons/ri";
-import { SiJavascript, SiTypescript } from "react-icons/si";
+import { SiJavascript, SiPrisma, SiTypescript } from "react-icons/si";
 import {
   Tooltip,
   TooltipContent,
@@ -177,68 +177,43 @@ const HeroHomePage = () => {
     {
       id: "reactjs",
       title: "React.JS",
-      icon: (
-        <FaReact
-          id="icon-react"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <FaReact id="icon-react" />,
     },
     {
       id: "nextjs",
       title: "Next.JS",
-      icon: (
-        <RiNextjsFill
-          id="icon-nextjs"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <RiNextjsFill id="icon-nextjs" />,
     },
     {
       id: "typescript",
       title: "Typescript",
-      icon: (
-        <SiTypescript
-          id="icon-typescript"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <SiTypescript id="icon-typescript" />,
     },
     {
       id: "github",
       title: "Github",
-      icon: (
-        <IoLogoGithub
-          id="icon-github"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <IoLogoGithub id="icon-github" />,
     },
     {
       id: "postgress",
       title: "PostgreSQL",
-      icon: (
-        <DiPostgresql
-          id="icon-postgress"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <DiPostgresql id="icon-postgress" />,
     },
     {
       id: "nodejs",
       title: "Node.JS",
-      icon: (
-        <FaNodeJs
-          id="icon-nodejs"
-          className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
-        />
-      ),
+      icon: <FaNodeJs id="icon-nodejs" />,
     },
     {
-      id: "javascript",
-      title: "Javascript",
+      id: "prisma",
+      title: "Prisma",
+      icon: <SiPrisma id="icon-javascript" />,
+    },
+    {
+      id: "aws",
+      title: "Amazon Web Services",
       icon: (
-        <SiJavascript
+        <FaAws
           id="icon-javascript"
           className="w-6 h-6 sm:w-12 sm:h-12 md:w-18 md:h-18"
         />
@@ -247,16 +222,16 @@ const HeroHomePage = () => {
   ];
 
   return (
-    <section id="hero-section">
+    <section id="hero-section" className="px-fluid">
       <div
         id="body"
-        className="flex items-center justify-center w-full h-screen flex-col border-b-1 px-6"
+        className="flex items-center justify-center w-full h-screen flex-col border-b-1"
       >
-        <div className="tracking-tight mb-40 ">
+        <div className="tracking-tight ">
           <div className="flex items-end gap-4">
             <h1
               id="split-name"
-              className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none origin-bottom"
+              className="text-fluid-xxl font-extrabold leading-none origin-bottom"
             >
               Michał
             </h1>
@@ -264,41 +239,46 @@ const HeroHomePage = () => {
               id="split-based"
               className="flex flex-col justify-end leading-none pb-1 md:pb-2 origin-left"
             >
-              <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
+              <span className="text-muted-foreground text-fluid-sm">
                 {`// Based in`}
               </span>
-              <span className="text-muted-foreground text-md sm:text-lg md:text-xl">
+              <span className="text-muted-foreground text-fluid-sm">
                 Łódź, Poland
               </span>
             </div>
           </div>
           <h1
             id="split-lastname"
-            className="scroll-m-20 text-6xl sm:text-7xl md:text-8xl font-extrabold  text-balance leading-none origin-bottom"
+            className="text-fluid-xxl font-extrabold  text-balance leading-none origin-bottom"
           >
             Nuszkiewicz
           </h1>
           <h2
             id="split-frontend"
-            className="scroll-m-20 text-5xl sm:text-6xl md:text-7xl font-semibold first:mt-0 leading-none inline-block text-chart-3"
+            className="scroll-m-20 text-fluid-xl font-semibold first:mt-0 leading-none inline-block text-chart-3"
           >
             Front-end Developer
           </h2>
 
           <blockquote
             id="split-quote"
-            className="mt-6 mb-6 border-l-2 pl-6 italic pb-3 text-md sm:text-lg md:text-xl text-muted-foreground"
+            className="mt-6 mb-6 border-l-2 pl-6 italic pb-3 text-fluid-sm text-muted-foreground"
           >
             &quot;I create what I would like to use.&quot;
           </blockquote>
-          <div id="icons" className="flex flex-row  gap-4">
+          <div
+            id="icons"
+            className="flex flex-row gap-2 md:gap-4 border-2 justify-center"
+          >
             {icons.map((icon) => (
-              <Tooltip key={icon.id}>
-                <TooltipTrigger>{icon.icon}</TooltipTrigger>
-                <TooltipContent>
-                  <p>{icon.title}</p>
-                </TooltipContent>
-              </Tooltip>
+              <span key={icon.id} className="text-fluid-icons">
+                <Tooltip>
+                  <TooltipTrigger>{icon.icon}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>{icon.title}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </span>
             ))}
           </div>
         </div>

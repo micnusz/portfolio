@@ -22,10 +22,10 @@ const CardTechnology = ({
   return (
     <Card
       id={id}
-      className="w-screen sm:w-[35rem] h-[40rem] border-4 bg-transparent text-foreground"
+      className="w-screen w-[30rem] h-[30rem] max-h-[40rem] border-4 bg-background text-muted-foreground"
     >
       <CardHeader>
-        <span className="text-muted-foreground">{cardNumber}</span>
+        <span className="text-muted-foreground">({cardNumber})</span>
         <CardTitle className="scroll-m-20 text-4xl sm:text-5xl md:text-6xl leading-none font-semibold text-chart-1">
           {title}
         </CardTitle>
@@ -38,7 +38,7 @@ const CardTechnology = ({
             ))}
           </ul>
         </div>
-        <div className=" mt-4">
+        <div className="mt-4">
           <p className="leading-7 text-lg">{description}</p>
         </div>
       </CardContent>

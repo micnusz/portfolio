@@ -1,6 +1,13 @@
 "use client";
 
-import { SiReactquery, SiReacttable, SiTypescript } from "react-icons/si";
+import {
+  SiPostgresql,
+  SiPrisma,
+  SiReactquery,
+  SiReacttable,
+  SiShadcnui,
+  SiTypescript,
+} from "react-icons/si";
 import ProjectCard from "../ui/project-card";
 import { FaGithub, FaReact, FaExternalLinkAlt } from "react-icons/fa";
 
@@ -254,19 +261,19 @@ const Projects = () => {
                   "/images/tarkov4.png",
                   "/images/tarkov5.png",
                 ]}
-                cardClassName="bg-foreground text-background"
+                cardClassName="bg-foreground text-muted-background"
                 iconsClassName="text-muted-background"
-                titleClassName="hover:text-muted-background text-chart-1"
+                titleClassName="hover:text-chart-1 text-background underline underline-offset-4"
                 linksClassName="text-muted-background hover:text-chart-1"
               />
             </div>
             <div className="project-card">
               <ProjectCard
-                id="testcard"
+                id="taskboard"
                 cardNumber="03"
-                title="Test Card"
-                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                link="https://github.com/micnusz/DummyJSON-Products-Page"
+                title="Project Taskboard"
+                description="A professional task management app, created to simplify work and improve clarity when tackling project-related problems. Users can create, read, update, and delete tasks, as well as filter, sort, and search tasks in real time using a dynamic search bar. "
+                link="https://github.com/micnusz/task-todo"
                 icons={[
                   {
                     id: "typescript",
@@ -304,10 +311,17 @@ const Projects = () => {
                     ),
                   },
                   {
-                    id: "api",
-                    title: "API",
+                    id: "prisma",
+                    title: "Prisma",
                     icon: (
-                      <HiOutlineArrowDownOnSquareStack className="text-xl sm:text-2xl md:text-3xl" />
+                      <SiPrisma className="text-xl sm:text-2xl md:text-3xl" />
+                    ),
+                  },
+                  {
+                    id: "postgresql",
+                    title: "PostgreSQL",
+                    icon: (
+                      <SiPostgresql className="text-xl sm:text-2xl md:text-3xl" />
                     ),
                   },
                 ]}
@@ -315,7 +329,7 @@ const Projects = () => {
                   {
                     id: "github",
                     title: "Github",
-                    href: "https://github.com/micnusz/tarkov-db",
+                    href: "https://github.com/micnusz/task-todo",
                     icon: (
                       <FaGithub className="text-xl sm:text-2xl md:text-3xl" />
                     ),
@@ -336,10 +350,10 @@ const Projects = () => {
                   "/images/tarkov4.png",
                   "/images/tarkov5.png",
                 ]}
-                cardClassName="bg-primary text-muted-foreground"
-                iconsClassName="text-muted-foreground"
-                titleClassName="hover:text-muted-background text-foreground"
-                linksClassName="text-muted-foreground hover:text-chart-1"
+                cardClassName="bg-chart-1 text-muted-background"
+                iconsClassName="text-muted-background"
+                titleClassName="hover:text-muted-foreground text-background underline underline-offset-4"
+                linksClassName="text-muted-background hover:text-muted-foreground"
               />
             </div>
           </div>
